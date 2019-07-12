@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+html{
+    min-height: 100vh;
+    color: rgb(215, 215, 238);
+    background: radial-gradient(rgb(163, 158, 158),rgb(24, 21, 21));
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+body{
+    margin: 0px;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    grid-gap: 1rem;
+    padding: 12px;
+    margin: 40px;
+    justify-content: center;
+    perspective: 1000px;
+}
+.game-info{
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+.card{
+    background-color:white;
+    width: 70px;
+    height: 70px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+img{
+    width: 70px;
+    height: 70px;
+}
+.front{
+    position: absolute;
+}
+.card :active{
+    transform: scale(.99)
+}
+.card.show{
+    transform: rotateY(180deg) 
+} 
+.back{
+    backface-visibility: hidden;
+    transform: rotateY(180deg)
+
+}
+p{
+font-size: 20px;
+}
+h1{
+    font-size: 40px;
+}
+button{
+    background-color: rgb(24, 21, 21);
+    color: rgb(215, 215, 238);
+    font-size: 15px;
+}
