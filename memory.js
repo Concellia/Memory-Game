@@ -1,10 +1,17 @@
-var arr = document.getElementsByClassName("card");
-var cardsArray = [...arr];
-var opencards = []; 
+
+//variable decleration
+var cardsArray = createCardsArray("card")
 var card1;
 var card2;
 var match = [];
 var hasflip = false;
+//The function takes the class name and create an array of the classes
+function createCardsArray(className){
+    var arr = document.getElementsByClassName(className);
+    var cards = [...arr]
+    return cards
+}
+
 function cardsFlipping(){    
     this.classList.add("show")
     if(!hasflip){
@@ -29,29 +36,45 @@ function cardsFlipping(){
                     card2.classList.remove("show")
                     },1000)}}}
 //Add event listener each time a card is clicked.
-for(let i = 0; i<cardsArray.length; i++){
-    cardsArray[i].addEventListener("click", cardsFlipping)};
+function eventListener(){
+    
+    for(let i = 0; i<cardsArray.length; i++){
+        cardsArray[i].addEventListener("click", cardsFlipping)
+       
+    };
+     
+}
+eventListener()
+
 
 //Shuffles the cards
 function shuffler(cardsArray){
     cardsArray.forEach(function(arr){
     let a = Math.floor(Math.random()*16)
-        arr.style.order = a
-    })};
+    arr.style.order = a
+    })
+ 
+};
 
 //Set the timer for the game
-var times = 60;
+function timer(){
+    var times = 60;
 var timer =  setInterval(function(){
     if(times == 0){
-    clearInterval(timer)
+        clearInterval(timer)
     if(alert("Time up, you lost!! ")){
-    }else{
+        }
+    else{
         window.location.reload();
-    };}
-         times--;
-         document.getElementById("time-passed").innerHTML = times
-        },1000)
+        };}
+             times--;
+             document.getElementById("time-passed").innerHTML = times
+            },1000)
+}
+timer()
+
 //start the game
 function start(){
 shuffler(cardsArray)}
 window.onload = start();
+

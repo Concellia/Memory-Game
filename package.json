@@ -1,0 +1,29 @@
+{
+  "name": "Memory-Game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "memory.js",
+  "scripts": {
+    "test-init": "./node_modules/jasmine/bin/jasmine.js init",
+    "test": "./node_modules/jasmine/bin/jasmine.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Concellia/Memory-Game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Concellia/Memory-Game/issues"
+  },
+  "homepage": "https://github.com/Concellia/Memory-Game#readme",
+  "devDependencies": {
+    "babel-test": "^0.2.3",
+    "jasmine": "^3.4.0"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "jsdom": "^15.1.1"
+  }
+}
