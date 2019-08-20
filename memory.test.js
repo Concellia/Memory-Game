@@ -1,3 +1,4 @@
+// This is just for testing the functions
 var jsdom = require("jsdom");
 var fs = require("fs")
 const index = fs.readFileSync("./memory.html", "utf-8")
@@ -16,7 +17,26 @@ function createCardsArray(className){
     var cards = [...arr]
     return cards
 }
-
+function cardMatch(card1,card2){
+    
+    if(card1.dataset.name === card2.dataset.name){
+        card1.removeEventListener("click", cardsFlipping)
+        card2.removeEventListener("click", cardsFlipping)
+        return true
+    }else {
+        return false
+    }
+     
+}
+function cardNotMatched(card1,card2){
+    if(card1.dataset.name != card2.dataset.name){
+        card1.classList.remove("show")
+        card2.classList.remove("show")
+        return true
+    }else{
+        return false
+    }
+}
 function cardsFlipping(){    
     this.classList.add("show")
     if(!hasflip){
@@ -26,8 +46,7 @@ function cardsFlipping(){
         hasflip = false;
         card2 = this;
         if(card1.dataset.name === card2.dataset.name){
-            card1.removeEventListener("click", cardsFlipping)
-            card2.removeEventListener("click", cardsFlipping)
+             cardMatch(card1,card2)
             match.push(card1)
             setTimeout(()=>{
                 if(match.length === 8){
@@ -37,8 +56,7 @@ function cardsFlipping(){
                     },1000)}
                 else{
                     setTimeout(()=>{
-                    card1.classList.remove("show")
-                    card2.classList.remove("show")
+                     cardNotMatched(card1,card2)
                     },1000)}}}
 //Add event listener each time a card is clicked.
 function eventListener(){
@@ -52,15 +70,10 @@ eventListener()
 
 //Shuffles the cards
 function shuffler(cardsArray){
-    let a;
-    let arr3 = [];
     cardsArray.forEach(function(arr){
-    a = Math.floor(Math.random()*16)
+    let a = Math.floor(Math.random()*16)
     arr.style.order = a
-    arr3.push(arr)
     })
-
- return arr3
 };
 
 //Set the timer for the game
@@ -80,13 +93,8 @@ var timer =  setInterval(function(){
 }
 timer()
 
-//start the game
-// function start(){
-// shuffler(cardsArray)}
-
-
 exports.createCardsArray = createCardsArray
 exports.shuffler = shuffler
 exports.cardsArray = cardsArray
-exports.cardsFlipping = cardsFlipping
-exports.eventListener = eventListener
+exports.cardMatch = cardMatch
+exports.cardNotMatched = cardNotMatched

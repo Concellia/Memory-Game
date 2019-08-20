@@ -11,6 +11,26 @@ function createCardsArray(className){
     var cards = [...arr]
     return cards
 }
+function cardMatch(card1,card2){
+    
+    if(card1.dataset.name === card2.dataset.name){
+        card1.removeEventListener("click", cardsFlipping)
+        card2.removeEventListener("click", cardsFlipping)
+        return true
+    }else {
+        return false
+    }
+     
+}
+function cardNotMatched(card1,card2){
+    if(card1.dataset.name != card2.dataset.name){
+        card1.classList.remove("show")
+        card2.classList.remove("show")
+        return true
+    }else{
+        return false
+    }
+}
 
 function cardsFlipping(){    
     this.classList.add("show")
@@ -21,8 +41,7 @@ function cardsFlipping(){
         hasflip = false;
         card2 = this;
         if(card1.dataset.name === card2.dataset.name){
-            card1.removeEventListener("click", cardsFlipping)
-            card2.removeEventListener("click", cardsFlipping)
+            cardMatch(card1,card2)
             match.push(card1)
             setTimeout(()=>{
                 if(match.length === 8){
@@ -32,8 +51,7 @@ function cardsFlipping(){
                     },1000)}
                 else{
                     setTimeout(()=>{
-                    card1.classList.remove("show")
-                    card2.classList.remove("show")
+                    cardNotMatched(card1,card2)
                     },1000)}}}
 //Add event listener each time a card is clicked.
 function eventListener(){

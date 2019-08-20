@@ -4,8 +4,8 @@ var memory = require("../memory.test")
 var createCardsArray = memory.createCardsArray
 var cardsArray = memory.cardsArray
 var shuffler = memory.shuffler
-var eventListener = memory.eventListener
-var cardsFlipping = memory.cardsFlipping
+var cardMatch = memory.cardMatch
+var cardNotMatched = memory.cardNotMatched
 
 describe("memory game", function(){
   beforeEach(function(){
@@ -18,16 +18,20 @@ describe("memory game", function(){
     expect(document.getElementsByClassName("card").length).toEqual(16)
     expect(createCardsArray("card")).toEqual(jasmine.any(Array))
   });
-  it("should be able to shuffle the cards when passed an array of cards", function(){
+  it("should be able to shuffle the cards when passed an array of cards and return a different array of cards", function(){
     
   expect(shuffler(cardsArray)).toBeDefined()
   expect(shuffler(cardsArray)).not.toBe(cardsArray)
   })
-  it("should be able to add an event listener to the the cards", function(){
-
-    expect(eventListener()).toBeDefined()
-    expect(eventListener()).toBe('an event listener has been added')
-
+  it("should be able remove the event listener if the cards matched and return true", function(){
+    
+    expect(cardMatch(cardsArray[0],cardsArray[1])).toBe(false)
+    expect(cardMatch(cardsArray[0],cardsArray[8])).toBe(true)
+     
+  })
+  it("should be able to flip the card back and hide the image if it does not match",function(){
+    expect(cardNotMatched(cardsArray[0],cardsArray[1])).toBe(true)
+    expect(cardNotMatched(cardsArray[0],cardsArray[8])).toBe(false)
   })
 })
 
