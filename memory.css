@@ -33,15 +33,15 @@ body{
 }
 .card{
     background-color:white;
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     position: relative;
     transform-style: preserve-3d;
     transition: transform .5s;
 }
 img{
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
 }
 .front{
     position: absolute;
