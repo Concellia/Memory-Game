@@ -20,7 +20,6 @@ describe("memory game", function(){
   });
   it("should be able to shuffle the cards when passed an array of cards and return a different array of cards", function(){
     
-  expect(shuffler(cardsArray)).toBeDefined()
   expect(shuffler(cardsArray)).not.toBe(cardsArray)
   })
   it("should be able remove the event listener if the cards matched and return true", function(){

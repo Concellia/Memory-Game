@@ -1,4 +1,3 @@
-
 //variable decleration
 var cardsArray = createCardsArray("card")
 var card1;
@@ -52,7 +51,9 @@ function cardsFlipping(){
                 else{
                     setTimeout(()=>{
                     cardNotMatched(card1,card2)
-                    },1000)}}}
+                    },1000)}
+                }
+                }
 //Add event listener each time a card is clicked.
 function eventListener(){
     
@@ -95,4 +96,3 @@ timer()
 function start(){
 shuffler(cardsArray)}
 window.onload = start();
-
