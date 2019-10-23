@@ -47,7 +47,8 @@ function cardsFlipping(){
                     if(alert("Congratulations you won!!!: Click ok to play again")){
                     }else{
                     window.location.reload();}}
-                    },1000)}
+                    },1000)
+                }
                 else{
                     setTimeout(()=>{
                     cardNotMatched(card1,card2)
